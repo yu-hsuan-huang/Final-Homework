@@ -56,8 +56,8 @@ public class Mapfragment extends Fragment implements LocationListener , OnMapCli
 		m.onCreate(savedInstanceState);
 		this.setUpMapIfNeeded();
 		
-		//Location lo= lm.getLastKnownLocation(best);
-		this.setUpMap();
+		Location lo= lm.getLastKnownLocation(best);
+		this.setUpMap(lo);
 		
 		map.setOnMapClickListener(this);
 		map.setOnInfoWindowClickListener(this);
@@ -67,27 +67,17 @@ public class Mapfragment extends Fragment implements LocationListener , OnMapCli
 		return mapfrag;
 	}
 
-	private void setUpMap() {
+	private void setUpMap(Location location) {
         if (map != null) {
-
-			LatLng loc = new LatLng(25.033611, 121.565000);
-            MarkerOptions markerOpt = new MarkerOptions();
-            markerOpt.position(loc);
-            markerOpt.title("台北101");
-            markerOpt.snippet("於1999年動工，2004年12月31日完工啟用，樓高509.2公尺。");
-            markerOpt.draggable(false);
-            markerOpt.visible(true);
-            markerOpt.anchor(0.5f, 0.5f);//設為圖片中心
-            markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
-
-            map.addMarker(markerOpt);
+        	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            map.addMarker(new MarkerOptions().position(loc).title("Marker"));
             CameraUpdate center= CameraUpdateFactory.newLatLngZoom(loc, 15);
-            
             if (center != null)  {
             	map.moveCamera(center);
             }
         }
 	}
+
 	
 	public void configureMap() {
 	    if (map == null)

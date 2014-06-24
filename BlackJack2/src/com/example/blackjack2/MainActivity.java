@@ -1,6 +1,5 @@
 package com.example.blackjack2;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -32,8 +31,8 @@ public class MainActivity extends ActionBarActivity{
 	 */
 	public static class PlaceholderFragment extends Fragment implements OnClickListener{
 
-		Button inputNameOkButton,mapButton;
-		EditText nameEdtext,passWord;
+		Button inputNameOkButton,mapButton,signupButton;
+		EditText accountEdtext,passWord;
 		
 		public PlaceholderFragment() {
 		}
@@ -46,11 +45,13 @@ public class MainActivity extends ActionBarActivity{
 			//declare elements 
 			inputNameOkButton = (Button) rootView.findViewById(R.id.button1);
 			mapButton = (Button) rootView.findViewById(R.id.button2);
-			nameEdtext = (EditText) rootView.findViewById(R.id.editText1);
+			signupButton = (Button) rootView.findViewById(R.id.button3);
+			accountEdtext = (EditText) rootView.findViewById(R.id.editText1);
 			passWord = (EditText) rootView.findViewById(R.id.editText2);
 			
 			inputNameOkButton.setOnClickListener(this);
 			mapButton.setOnClickListener(this);
+			signupButton.setOnClickListener(this);
 			return rootView;
 		}
 
@@ -66,9 +67,9 @@ public class MainActivity extends ActionBarActivity{
 				
 				Cursor cursor = 
 					       db.query("User", // a. table
-					       new String[] {"ID", "Name", "Password", "Money"}, // b. column names
-					       "Name=?", // c. selections 
-					       new String[] {nameEdtext.getText().toString()}, // d. selections args
+					       new String[] {"ID", "Name", "Account", "Password", "Money"}, // b. column names
+					       "Account=?", // c. selections 
+					       new String[] {accountEdtext.getText().toString()}, // d. selections args
 					       null, // e. group by
 					       null, // f. having
 					       "ID desc", // g. order by
@@ -78,46 +79,47 @@ public class MainActivity extends ActionBarActivity{
 						cursor.moveToFirst();
 						idString = cursor.getString(0);
 						
-						if(compareStr(cursor.getString(1),nameEdtext.getText().toString())&&compareStr(cursor.getString(2),passWord.getText().toString())){
+						if(compareStr(cursor.getString(2),accountEdtext.getText().toString())&&compareStr(cursor.getString(3),passWord.getText().toString())){
 							Toast.makeText(this.getActivity(), "Hello " + cursor.getString(1), Toast.LENGTH_SHORT).show();
 							//TODO
 							Betsfragment newFragment = new Betsfragment();
-							newFragment.setName(cursor.getString(1));
-							newFragment.setMoney(Integer.parseInt(cursor.getString(3)));
-							newFragment.setID(Integer.parseInt(cursor.getString(0)));
+							newFragment.setAll(cursor.getString(1), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(0)));
 							getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
 							//
-							//parent.changeFragment(2);//change fragment
-							nameEdtext.setText("");
+							accountEdtext.setText("");
 							passWord.setText("");
 						}else{
-							Toast.makeText(this.getActivity(), "Error", Toast.LENGTH_SHORT).show();
+							Toast.makeText(this.getActivity(), "Error password", Toast.LENGTH_SHORT).show();
 						}
 						
 						db.close();
 						dbHelper.close();
 						return;
 					}
-					db.close();
+					//db.close();
 					
 					if(idString == null){//Insert to database
-						SQLiteDatabase db1 = dbHelper.getWritableDatabase();			
+						/*SQLiteDatabase db1 = dbHelper.getWritableDatabase();			
 						ContentValues values = new ContentValues();
 						values.put("Name", nameEdtext.getText().toString()); 
 						values.put("Password", passWord.getText().toString());
 						values.put("Money", 200);
 						db1.insert("User",  null, values); 
-						db1.close();
-						Toast.makeText(this.getActivity(), "New Account Insert", Toast.LENGTH_SHORT).show();
+						db1.close();*/
+						Toast.makeText(this.getActivity(), "not have this account", Toast.LENGTH_SHORT).show();
 					}
-					dbHelper.close();
+					//dbHelper.close();
 					
 			}//end click inputNameOkButton
 			if(v==mapButton){
 				Mapfragment newFragment = new Mapfragment();
 				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
 			}//end click mapButton
-		
+			if(v==signupButton){
+				Signupfragment newFragment = new Signupfragment();
+				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
+			}
+			
 		}//onClick//end
 		
 		private boolean compareStr(String a,String b){

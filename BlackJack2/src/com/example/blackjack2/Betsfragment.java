@@ -2,6 +2,7 @@ package com.example.blackjack2;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +17,20 @@ public class Betsfragment extends Fragment implements OnClickListener {
 	String userName;
 	int ID,userMoney,bets = 0;
 	TextView show1,show2,showbets;
-	Button increase, minus, betOk;
+	Button increase, minus, betOk, back;
 	ImageButton showhand;
 	
 	public Betsfragment(){
 		
 	}
 	
-	public void setName(String un){
+	public void setAll(String un, int um, int id){
 		this.userName = un;
-	}
-
-	public void setMoney(int um){
 		this.userMoney = um;
-	}
-	public void setID(int id){
 		this.ID = id;
 	}
+
+
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,10 +51,12 @@ public class Betsfragment extends Fragment implements OnClickListener {
 		increase = (Button) bfrag.findViewById(R.id.button1);
 		minus = (Button) bfrag.findViewById(R.id.button2);
 		betOk = (Button) bfrag.findViewById(R.id.button3);
+		back = (Button) bfrag.findViewById(R.id.button4);
 		
 		increase.setOnClickListener(this);
 		minus.setOnClickListener(this);
 		betOk.setOnClickListener(this);
+		back.setOnClickListener(this);
 		
 		return bfrag;
 	}
@@ -80,7 +80,7 @@ public class Betsfragment extends Fragment implements OnClickListener {
 				showbets.setText("Bets : " + bets);
 			}
 			//Toast.makeText(this.getActivity(), "m", Toast.LENGTH_SHORT).show();
-		}else{
+		}else if(v==betOk){
 			if(bets!=0){
 				GameFragment newFragment = new GameFragment();
 				newFragment.setAll(ID,userName,userMoney,bets);
@@ -90,6 +90,12 @@ public class Betsfragment extends Fragment implements OnClickListener {
 				Toast.makeText(this.getActivity(), "bets not enter!", Toast.LENGTH_SHORT).show();
 			}
 			
+		}else{
+			FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+			getActivity().getSupportFragmentManager().popBackStack();
+			transaction.remove(this);
+			transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+			transaction.commit();
 		}
 	}
 

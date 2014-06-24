@@ -179,13 +179,12 @@ public class GameFragment extends Fragment implements OnClickListener{
 			
 			//cv.put("Name", userName);
         	cv.put("Money", userMoney);
-        	db.update("User", cv, "ID=1", null);
+        	db.update("User", cv, "ID="+ ID, null);
         	db.close();
+        	dbHelper.close();
 		}else if(v==again){//again button
 			Betsfragment newFragment = new Betsfragment();
-			newFragment.setName(userName);
-			newFragment.setMoney(userMoney);
-			newFragment.setID(ID);
+			newFragment.setAll(userName, userMoney, ID);
 			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).commit();
 		}
 		

@@ -20,7 +20,7 @@ public class MyDBHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		String SQL = "CREATE TABLE IF NOT EXISTS  User (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Password TEXT, Money INTEGER)";
+		String SQL = "CREATE TABLE IF NOT EXISTS  User (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Account TEXT, Password TEXT, Money INTEGER)";
 		db.execSQL(SQL);
 	}
 

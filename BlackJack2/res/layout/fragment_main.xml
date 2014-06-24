@@ -71,4 +71,13 @@
         android:layout_alignLeft="@+id/textView2"
         android:text="Map" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Sign up" />
+
 </RelativeLayout>

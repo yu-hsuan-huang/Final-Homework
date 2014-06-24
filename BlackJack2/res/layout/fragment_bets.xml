@@ -75,4 +75,13 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignLeft="@+id/button1"
+        android:text="退出" />
+
 </RelativeLayout>

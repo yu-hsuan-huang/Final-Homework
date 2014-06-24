@@ -1523,16 +1523,16 @@ containing a value of this type.
         public static final int win=0x7f0200b4;
     }
     public static final class id {
-        public static final int ImageView1=0x7f070061;
-        public static final int ImageView10=0x7f070069;
-        public static final int ImageView2=0x7f070060;
-        public static final int ImageView3=0x7f070062;
-        public static final int ImageView4=0x7f070063;
-        public static final int ImageView5=0x7f070064;
-        public static final int ImageView6=0x7f070065;
-        public static final int ImageView7=0x7f070066;
-        public static final int ImageView8=0x7f070067;
-        public static final int ImageView9=0x7f070068;
+        public static final int ImageView1=0x7f070062;
+        public static final int ImageView10=0x7f07006a;
+        public static final int ImageView2=0x7f070061;
+        public static final int ImageView3=0x7f070063;
+        public static final int ImageView4=0x7f070064;
+        public static final int ImageView5=0x7f070065;
+        public static final int ImageView6=0x7f070066;
+        public static final int ImageView7=0x7f070067;
+        public static final int ImageView8=0x7f070068;
+        public static final int ImageView9=0x7f070069;
         public static final int action_bar=0x7f07002e;
         public static final int action_bar_activity_content=0x7f070027;
         public static final int action_bar_container=0x7f07002d;
@@ -1544,7 +1544,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070028;
         public static final int action_menu_presenter=0x7f070029;
         public static final int action_mode_close_button=0x7f070036;
-        public static final int action_settings=0x7f07006e;
+        public static final int action_settings=0x7f070070;
         public static final int activity_chooser_view_content=0x7f070037;
         public static final int always=0x7f07001e;
         public static final int beginning=0x7f070023;
@@ -1552,6 +1552,7 @@ containing a value of this type.
         public static final int button1=0x7f070054;
         public static final int button2=0x7f070053;
         public static final int button3=0x7f070052;
+        public static final int button4=0x7f070056;
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;
         public static final int buy_with_google=0x7f07000e;
@@ -1563,8 +1564,9 @@ containing a value of this type.
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
         public static final int dropdown=0x7f070022;
-        public static final int editText1=0x7f07006b;
-        public static final int editText2=0x7f07006c;
+        public static final int editText1=0x7f07006c;
+        public static final int editText2=0x7f07006d;
+        public static final int editText3=0x7f07006f;
         public static final int edit_query=0x7f070042;
         public static final int end=0x7f070025;
         public static final int expand_activities_button=0x7f070038;
@@ -1579,20 +1581,20 @@ containing a value of this type.
         public static final int ifRoom=0x7f07001d;
         public static final int image=0x7f070039;
         public static final int imageButton1=0x7f07004f;
-        public static final int imageView01=0x7f07006a;
-        public static final int imageView1=0x7f070057;
-        public static final int imageView10=0x7f07005f;
-        public static final int imageView2=0x7f070056;
-        public static final int imageView3=0x7f070058;
-        public static final int imageView4=0x7f070059;
-        public static final int imageView5=0x7f07005a;
-        public static final int imageView6=0x7f07005b;
-        public static final int imageView7=0x7f07005c;
-        public static final int imageView8=0x7f07005d;
-        public static final int imageView9=0x7f07005e;
+        public static final int imageView01=0x7f07006b;
+        public static final int imageView1=0x7f070058;
+        public static final int imageView10=0x7f070060;
+        public static final int imageView2=0x7f070057;
+        public static final int imageView3=0x7f070059;
+        public static final int imageView4=0x7f07005a;
+        public static final int imageView5=0x7f07005b;
+        public static final int imageView6=0x7f07005c;
+        public static final int imageView7=0x7f07005d;
+        public static final int imageView8=0x7f07005e;
+        public static final int imageView9=0x7f07005f;
         public static final int listMode=0x7f070014;
         public static final int list_item=0x7f07003b;
-        public static final int mapview=0x7f07006d;
+        public static final int mapview=0x7f07006e;
         public static final int match_parent=0x7f07000c;
         public static final int middle=0x7f070024;
         public static final int monochrome=0x7f070013;
@@ -1691,7 +1693,8 @@ containing a value of this type.
         public static final int fragment_game=0x7f03001a;
         public static final int fragment_main=0x7f03001b;
         public static final int fragment_map=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int fragment_signup=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
