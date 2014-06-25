@@ -47,6 +47,7 @@ public class Mapfragment extends Fragment implements LocationListener , OnMapCli
 
 		lm = (LocationManager) getActivity().getSystemService (Context.LOCATION_SERVICE);
 		getActivity().getSystemService(Context.LOCATION_SERVICE);
+		
 		Criteria crit = new Criteria();
 		crit.setAccuracy(Criteria.ACCURACY_FINE);
 		best = lm.getBestProvider(crit, true);
@@ -56,8 +57,8 @@ public class Mapfragment extends Fragment implements LocationListener , OnMapCli
 		m.onCreate(savedInstanceState);
 		this.setUpMapIfNeeded();
 		
-		Location lo= lm.getLastKnownLocation(best);
-		this.setUpMap(lo);
+		//Location lo = lm.getLastKnownLocation(best);
+		this.setUpMap();
 		
 		map.setOnMapClickListener(this);
 		map.setOnInfoWindowClickListener(this);
@@ -67,15 +68,31 @@ public class Mapfragment extends Fragment implements LocationListener , OnMapCli
 		return mapfrag;
 	}
 
-	private void setUpMap(Location location) {
-        if (map != null) {
-        	LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+	private void setUpMap() {
+        /*if (map != null) {
+        	LatLng loc = new LatLng(Latitude, Longitude);
             map.addMarker(new MarkerOptions().position(loc).title("Marker"));
             CameraUpdate center= CameraUpdateFactory.newLatLngZoom(loc, 15);
             if (center != null)  {
             	map.moveCamera(center);
             }
+        }*/
+		LatLng loc = new LatLng(25.033611, 121.565000);
+        MarkerOptions markerOpt = new MarkerOptions();
+        markerOpt.position(new LatLng(25.033611, 121.565000));
+        markerOpt.title("台北101");
+        markerOpt.snippet("於1999年動工，2004年12月31日完工啟用，樓高509.2公尺。");
+        markerOpt.draggable(false);
+        markerOpt.visible(true);
+        markerOpt.anchor(0.5f, 0.5f);//設為圖片中心
+        markerOpt.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+
+        map.addMarker(markerOpt);
+        CameraUpdate center= CameraUpdateFactory.newLatLngZoom(loc, 10);
+        if (center != null)  {
+        	map.moveCamera(center);
         }
+
 	}
 
 	
